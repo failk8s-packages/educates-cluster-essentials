@@ -1,10 +1,10 @@
 {
     "registry": "quay.io/failk8s",
     "package": {
-        "name": "<#PACKAGE-NAME>",
+        "name": "educates-cluster-essentials",
         "domain": "dev.failk8s.com",
-        "displayName": "<#DISPLAY NAME>",
-        "version": "<#VERSION>"
+        "displayName": "Educates Cluster Essentials",
+        "version": "develop"
     },
-    "packages":[]
+    "packages": []
 }

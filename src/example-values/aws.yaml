@@ -2,11 +2,10 @@
 clusterPackages:
   contour:
     enabled: true
+    settings: {}
+  cert-manager:
+    enabled: false
     settings:
-      infraProvider: "kind"
-      service:
-        useHostPorts: false
-        type: ClusterIP
   kyverno:
     enabled: true
     settings: {}
@@ -14,6 +13,9 @@ clusterPackages:
     enabled: false
     settings: {}
 clusterInfrastructure:
-  provider: "custom"
+  provider: "aws"
+  aws:
+    aws_id: "123456789012"
+    region: "eu-west-1"
 clusterSecurity:
   policyEngine: "none"

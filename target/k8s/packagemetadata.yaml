@@ -1,0 +1,6 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: PackageMetadata
+metadata:
+  name: educates-cluster-essentials.dev.failk8s.com
+spec:
+  displayName: Educates Cluster Essentials

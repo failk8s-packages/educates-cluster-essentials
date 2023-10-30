@@ -1,0 +1,42 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:library", "library")
+#@ load("@ytt:template", "template")
+#@ load("@ytt:struct", "struct")
+#@ load("@ytt:json", "json")
+#@ load("defaults/aws.lib.yaml", "aws", "eks")
+#@ load("defaults/azure.lib.yaml", "azure", "aks")
+#@ load("defaults/gcp.lib.yaml", "gcp", "gke", "gke_autopilot")
+#@ load("defaults/local.lib.yaml", "kind", "minikube", "custom")
+
+#@ def getSpecificValues(originalValues):
+#@   if data.values.clusterInfrastructure.provider == "aws":
+#@     return aws(originalValues)
+#@   elif data.values.clusterInfrastructure.provider == "eks":
+#@     return eks(originalValues)
+#@   elif data.values.clusterInfrastructure.provider == "gcp":
+#@     return gcp(originalValues)
+#@   elif data.values.clusterInfrastructure.provider == "gke":
+#@     return gke(originalValues)
+#@   elif data.values.clusterInfrastructure.provider == "gke_autopilot":
+#@     return gke_autopilot(originalValues)
+#@   elif data.values.clusterInfrastructure.provider == "azure":
+#@     return azure(originalValues)
+#@   elif data.values.clusterInfrastructure.provider == "aks":
+#@     return aks(originalValues)
+#@   elif data.values.clusterInfrastructure.provider == "kind":
+#@     return kind(originalValues)
+#@   elif data.values.clusterInfrastructure.provider == "minikube":
+#@     return minikube(originalValues)
+#@   elif data.values.clusterInfrastructure.provider == "custom":
+#@     return custom(originalValues)
+#@   end
+#@ end
+
+#@ valuesToApply = struct.encode(json.decode(json.encode(getSpecificValues(data.values))))
+#@ for name in valuesToApply.clusterPackages:
+#@ package = valuesToApply.clusterPackages[name]
+#@ if package.enabled:
+--- #@ template.replace(library.get(name).with_data_values(package.settings).eval())
+---
+#@ end
+#@ end

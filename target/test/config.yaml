@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: educates-cluster-essentials
+  namespace: educates-cluster-essentials-package
+stringData:
+  values.yml: null

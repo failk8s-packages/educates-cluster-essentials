@@ -1,60 +1,73 @@
-# <#PACKAGE-NAME>-package
+# educates-cluster-essentials-package
 
-This package provides <#PACKAGE-NAME> functionality using [<#PACKAGE-NAME>](<#PACKAGE-NAME-DOCS-URL>).
+This package provides educates-cluster-essentials functionality using [educates-cluster-essentials](https://github.com/vmware-tanzu-labs/educates-training-platform/tree/develop/carvel-packages/cluster-essentials).
 
 ## Components
 
-* <#PACKAGE-NAME>
+- contour
+- kyverno
+- metacontroller
+- **TODO: external-dns**
+- **TODO: cert-manager**
+- **TODO: certs**
+- **TODO: registry**
 
 ## Configuration
 
-The following configuration values can be set to customize the <#PACKAGE-NAME> installation.
+The following configuration values can be set to customize the educates-cluster-essentials installation.
 
 ### Global
 
-| Value | Required/Optional | Description |
-|-------|-------------------|-------------|
-| `namespace` | Optional | The namespace in which to deploy <#PACKAGE-NAME>. |
+| Value       | Required/Optional | Description                                                   |
+| ----------- | ----------------- | ------------------------------------------------------------- |
+| `namespace` | Optional          | The namespace in which to deploy educates-cluster-essentials. |
 
 ## Usage Example
 
-This walkthrough guides you through using <#PACKAGE-NAME>...
+This walkthrough guides you through using educates-cluster-essentials...
 
-__NOTE__: `develop` version of the package needs to comply with semver, hence the package will be versioned as `0.0.0+develop`
+**NOTE**: `develop` version of the package needs to comply with semver, hence the package will be versioned as `0.0.0+develop`
 
 ## Test in minikube
 
 Start minikube:
+
 ```
 minikube start
 ```
 
 Install kapp-controller 0.20+
+
 ```
 kubectl apply -f https://github.com/vmware-tanzu/carvel-kapp-controller/releases/latest/download/release.yml
 ```
 
 Install the Package Metadata:
+
 ```
 kubectl apply -f target/k8s
 ```
 
 Install the Required RBAC for the package install (create the control NS):
+
 ```
 kubectl apply -f target/test/packageinstall-ns-rbac.yaml
 ```
 
 Create the configuration file for your cluster:
+
 ```
-kubectl create secret generic <#PACKAGE-NAME> -n <#PACKAGE-NAME>-package --from-file=values.yaml=src/examples-values/minikube.yaml -o yaml --dry-run=client | kubectl apply -f -
+kubectl create secret generic educates-cluster-essentials -n educates-cluster-essentials-package --from-file=values.yaml=src/examples-values/minikube.yaml -o yaml --dry-run=client | kubectl apply -f -
 ```
 
 Create the package:
+
 ```
 kubectl apply -f target/test/packageinstall.yaml
 ```
 
 Verify the installation:
+
 ```
 watch kubectl get packageinstall -A
 ```
@@ -62,7 +75,7 @@ watch kubectl get packageinstall -A
 If there's an issue, you can verify the problem with:
 
 ```
-kubectl get packageinstall <#PACKAGE-NAME> -n <#PACKAGE-NAME>-package -o yaml
+kubectl get packageinstall educates-cluster-essentials -n educates-cluster-essentials-package -o yaml
 ```
 
 ## Develop checklist

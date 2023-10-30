@@ -1,0 +1,31 @@
+#@ def azure(originalValues):
+clusterPackages:
+  contour:
+    enabled: true
+    settings:
+      infraProvider: "azure"
+      service:
+        type: LoadBalancer
+  kyverno:
+    enabled: true
+    settings: {}
+  metacontroller:
+    enabled: false
+    settings: {}
+#@ end
+
+#@ def aks(originalValues):
+clusterPackages:
+  contour:
+    enabled: true
+    settings:
+      infraProvider: "azure"
+      service:
+        type: LoadBalancer
+  kyverno:
+    enabled: true
+    settings: {}
+  metacontroller:
+    enabled: false
+    settings: {}
+#@ end

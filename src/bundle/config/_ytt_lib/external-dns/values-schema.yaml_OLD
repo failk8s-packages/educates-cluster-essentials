@@ -1,0 +1,52 @@
+#@data/values-schema
+---
+#! The namespace in which to deploy ExternalDNS.
+namespace: external-dns
+create_namespace: true
+
+image:
+  name: "registry.k8s.io/external-dns/external-dns:v0.13.5"
+  pullPolicy: "IfNotPresent"
+
+#! Domain that ExternalDNS will filter
+domain: ""
+
+#! DNS provider to use
+provider: "" #! Values are aws, bind, azure
+
+#! Which types of objects will be watched for annotations
+target:
+  service: true #! True/False
+  ingress: false #! True/False
+  contour: false #! True/False. Defines whether we should deploy contour integration for external-dns
+
+#! AWS specific configuration
+aws:
+  auth: #! Only one of the two needs to be provided, either irsa role or iam keys.
+    irsa:
+      role: ""
+    iam:
+      access_key_id: ""
+      secret_access_key: ""
+  zone_type: public #! only look at public hosted zones (valid values are public, private or no value for both)
+  policy: upsert-only #! would prevent ExternalDNS from deleting any records, omit to enable full synchronization
+  txt_owner: k8s #! This is to identify the owner of the txt records so that external-dns don't mess with existing records, you can use Route53 hosted zone identifier for my-zone.example.org
+  region: us-east-2
+
+#! BIND specific configuration
+bind:
+  txt_owner: k8s
+  host: "" #! IP of RFC2136 compatible dns server
+  port: 53
+  tsig:
+    secret: ""
+    secret_alg: hmac-sha256
+    keyname: externaldns-key
+
+#! AZURE specific configuration
+azure:
+  resource_group: "" #! TODO: Assert
+
+#! TODO: Add security context
+#@schema/type any=True
+securityContext: {}

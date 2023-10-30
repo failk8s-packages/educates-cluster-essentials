@@ -1,0 +1,48 @@
+apiVersion: vendir.k14s.io/v1alpha1
+directories:
+- contents:
+  - git:
+      commitTitle: 'chore(release): 4.2.0...'
+      sha: 5e58e73fda5da5fa4871e4aad3281b9af1777927
+      tags:
+      - v4.2.0
+    path: .
+  path: config/_ytt_lib/metacontroller/upstream
+- contents:
+  - githubRelease:
+      tag: v1.9.2
+      url: https://api.github.com/repos/kyverno/kyverno/releases/96431508
+    path: .
+  path: config/_ytt_lib/kyverno/upstream
+- contents:
+  - git:
+      commitTitle: Generating the package files
+      sha: b35780dd5667979dc6f8cd54eccf809689c6d741
+      tags:
+      - 1.12.0-3-gb35780d
+    path: .
+  path: config/_ytt_lib/cert-manager
+- contents:
+  - git:
+      commitTitle: Updating to 1.16.1 of contour and adding infraProvider and other
+        changes
+      sha: 6017763149ea5170a5ae5f791124ecc8b5c65456
+      tags:
+      - 1.25.0-2-g6017763
+    path: .
+  path: config/_ytt_lib/contour
+- contents:
+  - git:
+      commitTitle: Updates to package and schema
+      sha: 126cb60e569b61814b996c42a1b87943a02ec955
+    path: .
+  path: config/_ytt_lib/external-dns
+- contents:
+  - git:
+      commitTitle: Updates to package and schema
+      sha: 90105c09a2cbd144fa231189ac91779566aa3ad6
+      tags:
+      - 1.1.0-3-g90105c0
+    path: .
+  path: config/_ytt_lib/certs
+kind: LockConfig

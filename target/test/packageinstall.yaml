@@ -1,0 +1,15 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: educates-cluster-essentials
+  namespace: educates-cluster-essentials-package
+spec:
+  serviceAccountName: educates-cluster-essentials
+  packageRef:
+    refName: educates-cluster-essentials.dev.failk8s.com
+    versionSelection:
+      constraints: 0.0.0+develop
+      prereleases: {}
+  values:
+  - secretRef:
+      name: educates-cluster-essentials

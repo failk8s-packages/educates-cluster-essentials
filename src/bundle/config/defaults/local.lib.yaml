@@ -1,0 +1,11 @@
+#@ def kind(originalValues):
+infraProvider: "kind"
+#@ end
+
+#@ def minikube(originalValues):
+infraProvider: "minikube"
+#@ end
+
+#@ def custom(originalValues):
+#@   return originalValues
+#@ end

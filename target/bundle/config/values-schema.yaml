@@ -1,0 +1,37 @@
+#@data/values-schema
+---
+clusterPackages:
+  contour:
+    enabled: true
+    #@schema/nullable
+    #@schema/type any=True
+    settings: {}
+  cert-manager:
+    enabled: false
+    #@schema/nullable
+    #@schema/type any=True
+    settings: {}
+  kyverno:
+    enabled: true
+    #@schema/nullable
+    #@schema/type any=True
+    settings: {}
+  metacontroller:
+    enabled: false
+    #@schema/nullable
+    #@schema/type any=True
+    settings: {}
+clusterInfrastructure:
+  #@schema/validation one_of=["aws", "gcp", "azure", "eks", "gke", "gke-autopilot", "aks", "kind", "minikube", "custom"]
+  provider: "aws"
+  #@schema/nullable
+  #@schema/type any=True
+  aws:
+    aws_id: "123456789012"
+    region: "eu-west-1"
+clusterSecurity:
+  #@schema/validation one_of=["pod-security-policies", "pod-security-standards", "security-context-constraints", "kyverno", "none"]
+  policyEngine: "kyverno"
+
+clusterIngress:
+  domain: "educates-local-dev.test"
