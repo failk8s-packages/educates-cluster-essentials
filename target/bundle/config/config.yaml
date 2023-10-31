@@ -2,11 +2,13 @@
 #@ load("@ytt:library", "library")
 #@ load("@ytt:template", "template")
 #@ load("@ytt:struct", "struct")
+#@ load("@ytt:overlay", "overlay")
 #@ load("@ytt:json", "json")
 #@ load("defaults/aws.lib.yaml", "aws", "eks")
 #@ load("defaults/azure.lib.yaml", "azure", "aks")
 #@ load("defaults/gcp.lib.yaml", "gcp", "gke", "gke_autopilot")
 #@ load("defaults/local.lib.yaml", "kind", "minikube", "custom")
+#@ load("functions.lib.yaml", "addKappAnnotations")
 
 #@ def getSpecificValues(originalValues):
 #@   if data.values.clusterInfrastructure.provider == "aws":
@@ -36,7 +38,7 @@
 #@ for name in valuesToApply.clusterPackages:
 #@ package = valuesToApply.clusterPackages[name]
 #@ if package.enabled:
---- #@ template.replace(library.get(name).with_data_values(package.settings).eval())
+--- #@ template.replace(overlay.apply(library.get(name).with_data_values(package.settings).eval(), addKappAnnotations(name, valuesToApply)))
 ---
 #@ end
 #@ end
