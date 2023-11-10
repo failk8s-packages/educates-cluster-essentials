@@ -1,4 +1,6 @@
-#@ def gcp(originalValues):
+#@ load("@ytt:data", "data")
+
+#@ def gcp():
 clusterPackages:
   contour:
     enabled: true
@@ -14,7 +16,7 @@ clusterPackages:
     settings: {}
 #@ end
 
-#@ def gke(originalValues):
+#@ def gke():
 clusterPackages:
   contour:
     enabled: true
@@ -30,7 +32,7 @@ clusterPackages:
     settings: {}
 #@ end
 
-#@ def gke_autopilot(originalValues):
+#@ def gke_autopilot():
 clusterPackages:
   contour:
     enabled: true

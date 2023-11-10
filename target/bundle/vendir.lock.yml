@@ -24,17 +24,16 @@ directories:
   path: config/_ytt_lib/cert-manager
 - contents:
   - git:
-      commitTitle: Updating to 1.16.1 of contour and adding infraProvider and other
-        changes
-      sha: 6017763149ea5170a5ae5f791124ecc8b5c65456
+      commitTitle: Updated to contour 1.27.0
+      sha: e2e86099523f78d9e43cc1011fb0ff63e6fb83b1
       tags:
-      - 1.25.0-2-g6017763
+      - 1.25.0-3-ge2e8609
     path: .
   path: config/_ytt_lib/contour
 - contents:
   - git:
-      commitTitle: Updates to package and schema
-      sha: 126cb60e569b61814b996c42a1b87943a02ec955
+      commitTitle: Fixes
+      sha: 7e03e948b61e455f2f6fa66a5f633aef5d4c84ca
     path: .
   path: config/_ytt_lib/external-dns
 - contents:

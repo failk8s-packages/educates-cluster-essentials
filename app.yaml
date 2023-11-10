@@ -1,0 +1,47 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: educates-cluster-essentials
+  namespace: package-installs
+stringData:
+  values.yml: |
+    clusterInfrastructure:
+      provider: "aws"
+      aws:
+        awsId: "888520879783"
+        region: "eu-west-1"
+        clusterName: "educates-eks-develop-jorge"
+    clusterSecurity:
+      policyEngine: "none"
+    clusterIngress:
+      domain: "cluster-eu.spring-staging.academy"
+
+---
+apiVersion: "kappctrl.k14s.io/v1alpha1"
+kind: App
+metadata:
+  labels:
+    training.educates.dev/package: cluster-essentials
+  name: educates-cluster-essentials
+  namespace: package-installs # educates-package
+spec:
+  syncPeriod: "10m" # 1h
+  serviceAccountName: package-installs # educates-cluster-essentials-deploy
+  fetch:
+    - imgpkgBundle:
+        image: quay.io/failk8s/educates-cluster-essentials-package:develop # ghcr.io/vmware-tanzu-labs/educates-cluster-essentials:2.6.16
+  template:
+    - ytt:
+        paths:
+          - config
+        valuesFrom:
+          - secretRef:
+              name: educates-cluster-essentials
+    - kbld:
+        paths:
+          - .imgpkg/images.yml
+          - "-"
+  deploy:
+    - kapp:
+        rawOptions: ["--app-changes-max-to-keep=5", "--wait-timeout=5m"]

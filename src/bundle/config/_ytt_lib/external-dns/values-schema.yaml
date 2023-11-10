@@ -88,6 +88,11 @@ aws:
     accessKey: ""
     #@schema/desc "AWS secret key. When provided along with the aws.accessKey, a Secret will be created and referenced in the external-dns Deployment."
     secretKey: ""
+  args:
+    zone_type: "public"
+    policy: "upsert-only"
+    domain_filter: ""
+    txt_owner_id: "k8s"
 
 #@schema/desc "Azure configuration. Package will create azure.json Secret, Volume, and VolumeMount with supplied values."
 #@schema/nullable

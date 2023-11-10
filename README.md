@@ -7,9 +7,9 @@ This package provides educates-cluster-essentials functionality using [educates-
 - contour
 - kyverno
 - metacontroller
-- **TODO: external-dns**
-- **TODO: cert-manager**
-- **TODO: certs**
+- external-dns
+- cert-manager
+- certs
 - **TODO: registry**
 
 ## Configuration
@@ -21,6 +21,22 @@ The following configuration values can be set to customize the educates-cluster-
 | Value       | Required/Optional | Description                                                   |
 | ----------- | ----------------- | ------------------------------------------------------------- |
 | `namespace` | Optional          | The namespace in which to deploy educates-cluster-essentials. |
+
+## Test locally
+
+If you want to get the output of the configuration to be applied, use:
+
+```
+ytt --data-values-file test.yaml  -f src/bundle/config
+```
+
+But if you want the internal configuration that is going to be used for specific infrastructure, use instead:
+
+```
+ytt --data-values-file test.yaml  -f src/bundle/config --data-value-yaml debug=True
+```
+
+**NOTE:** `--data-value-yaml debug=True` does enable output of the internal configuration to be used for the specific infra type.
 
 ## Usage Example
 

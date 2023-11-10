@@ -1,0 +1,6 @@
+clusterInfrastructure:
+  provider: "kind"
+clusterSecurity:
+  policyEngine: "kyverno"
+clusterIngress:
+  domain: 10.30.82.22.nip.io

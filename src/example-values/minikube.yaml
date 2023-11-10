@@ -1,19 +1,4 @@
-#! Add your values here (without ytt annotations)
-clusterPackages:
-  contour:
-    enabled: true
-    settings:
-      infraProvider: "kind"
-      service:
-        useHostPorts: false
-        type: ClusterIP
-  kyverno:
-    enabled: true
-    settings: {}
-  metacontroller:
-    enabled: false
-    settings: {}
 clusterInfrastructure:
-  provider: "custom"
+  provider: "minikube"
 clusterSecurity:
   policyEngine: "none"

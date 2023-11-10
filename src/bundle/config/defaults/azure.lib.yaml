@@ -1,4 +1,6 @@
-#@ def azure(originalValues):
+#@ load("@ytt:data", "data")
+
+#@ def azure():
 clusterPackages:
   contour:
     enabled: true
@@ -14,7 +16,7 @@ clusterPackages:
     settings: {}
 #@ end
 
-#@ def aks(originalValues):
+#@ def aks():
 clusterPackages:
   contour:
     enabled: true

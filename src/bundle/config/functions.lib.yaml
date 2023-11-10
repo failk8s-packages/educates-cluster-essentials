@@ -1,13 +1,25 @@
 #@ load("@ytt:data", "data")
 #@ load("@ytt:overlay", "overlay")
 
+#@ orderedPackagesList = [
+#@    "cert-manager",
+#@    "contour",
+#@    "external-dns",
+#@    "certs",
+#@    "kyverno",
+#@    "metacontroller",
+#@    "educates"
+#@ ]
+
 #@ def addKappAnnotations(packageName, valuesToApply):
 
 #@ activatedPackagesList = []
-#@ for name in valuesToApply.clusterPackages:
-#@   package = valuesToApply.clusterPackages[name]
-#@   if package.enabled == True:
-#@     activatedPackagesList.append(name)
+#@ for name in orderedPackagesList:
+#@   if name in valuesToApply.clusterPackages:
+#@     package = valuesToApply.clusterPackages[name]
+#@     if package.enabled == True:
+#@       activatedPackagesList.append(name)
+#@     end
 #@   end
 #@ end
 

@@ -1,21 +1,12 @@
 #! Add your values here (without ytt annotations)
-clusterPackages:
-  contour:
-    enabled: true
-    settings: {}
-  cert-manager:
-    enabled: false
-    settings:
-  kyverno:
-    enabled: true
-    settings: {}
-  metacontroller:
-    enabled: false
-    settings: {}
 clusterInfrastructure:
   provider: "aws"
   aws:
-    aws_id: "123456789012"
     region: "eu-west-1"
+    irsaRole:
+      external-dns: "arn:aws:iam::123456789012:role/external-dns"
+      cert-manager: "arn:aws:iam::123456789012:role/cert-manager"
 clusterSecurity:
-  policyEngine: "none"
+  policyEngine: "kyverno"
+clusterIngress:
+  domain: "cluster.example.com"

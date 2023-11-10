@@ -10,35 +10,39 @@
 #@ load("defaults/local.lib.yaml", "kind", "minikube", "custom")
 #@ load("functions.lib.yaml", "addKappAnnotations")
 
-#@ def getSpecificValues(originalValues):
+#@ def getSpecificValues():
 #@   if data.values.clusterInfrastructure.provider == "aws":
-#@     return aws(originalValues)
+#@     return aws()
 #@   elif data.values.clusterInfrastructure.provider == "eks":
-#@     return eks(originalValues)
+#@     return eks()
 #@   elif data.values.clusterInfrastructure.provider == "gcp":
-#@     return gcp(originalValues)
+#@     return gcp()
 #@   elif data.values.clusterInfrastructure.provider == "gke":
-#@     return gke(originalValues)
+#@     return gke()
 #@   elif data.values.clusterInfrastructure.provider == "gke_autopilot":
-#@     return gke_autopilot(originalValues)
+#@     return gke_autopilot()
 #@   elif data.values.clusterInfrastructure.provider == "azure":
-#@     return azure(originalValues)
+#@     return azure()
 #@   elif data.values.clusterInfrastructure.provider == "aks":
-#@     return aks(originalValues)
+#@     return aks()
 #@   elif data.values.clusterInfrastructure.provider == "kind":
-#@     return kind(originalValues)
+#@     return kind()
 #@   elif data.values.clusterInfrastructure.provider == "minikube":
-#@     return minikube(originalValues)
+#@     return minikube()
 #@   elif data.values.clusterInfrastructure.provider == "custom":
-#@     return custom(originalValues)
+#@     return custom()
 #@   end
 #@ end
 
-#@ valuesToApply = struct.encode(json.decode(json.encode(getSpecificValues(data.values))))
+#@ valuesToApply = struct.encode(json.decode(json.encode(getSpecificValues())))
+#@ if data.values.debug:
+--- #@ valuesToApply
+#@ else:
 #@ for name in valuesToApply.clusterPackages:
 #@ package = valuesToApply.clusterPackages[name]
 #@ if package.enabled:
 --- #@ template.replace(overlay.apply(library.get(name).with_data_values(package.settings).eval(), addKappAnnotations(name, valuesToApply)))
 ---
+#@ end
 #@ end
 #@ end

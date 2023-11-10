@@ -9,9 +9,9 @@ def check_infra(val):
 end
 
 def check_host_ports(val):
-  if val["infraProvider"] in ["kind"]:
-    return val["service"]["useHostPorts"] == False or fail("{} infra provider requires service.useHostPorts to be False".format(val["infraProvider"]))
-  end
+#!  if val["infraProvider"] in ["kind"]:
+#!    return val["service"]["useHostPorts"] == False or fail("{} infra provider requires service.useHostPorts to be False".format(val["infraProvider"]))
+#!  end
   if val["infraProvider"] in ["aws", "gcp", "azure", "minikube"]:
     return val["service"]["useHostPorts"] == True or fail("{} infra provider requires service.useHostPorts to be True".format(val["infraProvider"]))
   end

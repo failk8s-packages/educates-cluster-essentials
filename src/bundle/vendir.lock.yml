@@ -24,17 +24,16 @@ directories:
   path: config/_ytt_lib/cert-manager
 - contents:
   - git:
-      commitTitle: Updating to 1.16.1 of contour and adding infraProvider and other
-        changes
-      sha: 6017763149ea5170a5ae5f791124ecc8b5c65456
+      commitTitle: Added overlay for kind
+      sha: 1d7a7c7d7f7c91462349723758f98983c9cb00cf
       tags:
-      - 1.25.0-2-g6017763
+      - 1.25.0-4-g1d7a7c7
     path: .
   path: config/_ytt_lib/contour
 - contents:
   - git:
-      commitTitle: Updates to package and schema
-      sha: 126cb60e569b61814b996c42a1b87943a02ec955
+      commitTitle: Fixes
+      sha: 7e03e948b61e455f2f6fa66a5f633aef5d4c84ca
     path: .
   path: config/_ytt_lib/external-dns
 - contents:
@@ -45,4 +44,12 @@ directories:
       - 1.1.0-3-g90105c0
     path: .
   path: config/_ytt_lib/certs
+- contents:
+  - git:
+      commitTitle: 'Merge pull request #216 from GrahamDumpleton/terminal-focus...'
+      sha: 718610ab37a0ce601e6237b9494171c37d5e34e3
+      tags:
+      - 2.6.16-24-g718610ab
+    path: .
+  path: config/_ytt_lib/educates
 kind: LockConfig

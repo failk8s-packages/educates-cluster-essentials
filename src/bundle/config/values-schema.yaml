@@ -1,5 +1,6 @@
 #@data/values-schema
 ---
+debug: false
 clusterPackages:
   contour:
     enabled: true
@@ -35,13 +36,190 @@ clusterInfrastructure:
   #@schema/validation one_of=["aws", "gcp", "azure", "eks", "gke", "gke-autopilot", "aks", "kind", "minikube", "custom"]
   provider: "aws"
   #@schema/nullable
-  #@schema/type any=True
   aws:
-    aws_id: "123456789012"
-    region: "eu-west-1"
+    awsId: "" #! This is needed for the external-dns and cert-manager service accounts (either this and awsId or irsaRoles)
+    region: "" #! This is needed for the cluster issuer
+    clusterName: "" #! This is needed for the external-dns and cert-manager service accounts (either this and awsId or irsaRoles)
+    irsaRole: #! This is needed for the external-dns and cert-manager service accounts (either this or awsId + clusterName)
+      external-dns: ""
+      cert-manager: ""
+#!--------- educates training platform schema
+imageRegistry:
+  host: "ghcr.io"
+  namespace: "vmware-tanzu-labs"
+#@schema/nullable
+imageVersions:
+  - name: ""
+    image: ""
+#@schema/nullable
+clusterRuntime:
+  #@schema/nullable
+  class: ""
+#@schema/nullable
+clusterIngress:
+  #@schema/nullable
+  domain: "educates-local-dev.test"
+  #@schema/nullable
+  class: ""
+  #@schema/nullable
+  protocol: ""
+  #@schema/nullable
+  tlsCertificate:
+    #@schema/nullable
+    tls.crt: ""
+    #@schema/nullable
+    tls.key: ""
+  #@schema/nullable
+  tlsCertificateRef:
+    #@schema/nullable
+    namespace: ""
+    #@schema/nullable
+    name: ""
+  #@schema/nullable
+  caCertificate:
+    #@schema/nullable
+    ca.crt: ""
+  #@schema/nullable
+  caCertificateRef:
+    #@schema/nullable
+    namespace: ""
+    #@schema/nullable
+    name: ""
+  #@schema/nullable
+  caNodeInjector:
+    #@schema/nullable
+    enabled: false
+#@schema/nullable
+sessionCookies:
+  #@schema/nullable
+  domain: ""
+#@schema/nullable
+clusterStorage:
+  #@schema/nullable
+  class: ""
+  #@schema/nullable
+  user: 0
+  #@schema/nullable
+  group: 1
+#@schema/nullable
+clusterSecrets:
+  #@schema/nullable
+  pullSecretRefs:
+    - namespace: ""
+      name: ""
+#@schema/nullable
 clusterSecurity:
+  #@schema/nullable
   #@schema/validation one_of=["pod-security-policies", "pod-security-standards", "security-context-constraints", "kyverno", "none"]
   policyEngine: "kyverno"
-
-clusterIngress:
-  domain: "educates-local-dev.test"
+#@schema/nullable
+workshopSecurity:
+  #@schema/nullable
+  rulesEngine: "kyverno"
+#@schema/nullable
+trainingPortal:
+  #@schema/nullable
+  credentials:
+    #@schema/nullable
+    admin:
+      #@schema/nullable
+      username: "educates"
+      #@schema/nullable
+      password: ""
+    #@schema/nullable
+    robot:
+      #@schema/nullable
+      username: "robot@educates"
+      #@schema/nullable
+      password: ""
+  #@schema/nullable
+  clients:
+    #@schema/nullable
+    robot:
+      #@schema/nullable
+      id: ""
+      #@schema/nullable
+      secret: ""
+#@schema/nullable
+dockerDaemon:
+  #@schema/nullable
+  networkMTU: 1400
+  #@schema/nullable
+  proxyCache:
+    #@schema/nullable
+    remoteURL: ""
+    #@schema/nullable
+    username: ""
+    #@schema/nullable
+    password: ""
+#@schema/nullable
+clusterNetwork:
+  #@schema/default ["169.254.169.254/32", "fd00:ec2::254/128"]
+  blockCIDRs:
+    - ""
+#@schema/nullable
+workshopAnalytics:
+  #@schema/nullable
+  google:
+    #@schema/nullable
+    trackingId: ""
+  #@schema/nullable
+  clarity:
+    #@schema/nullable
+    trackingId: ""
+  #@schema/nullable
+  amplitude:
+    #@schema/nullable
+    trackingId: ""
+  #@schema/nullable
+  webhook:
+    #@schema/nullable
+    url: ""
+#@schema/nullable
+websiteStyling:
+  #@schema/nullable
+  workshopDashboard:
+    #@schema/nullable
+    html: ""
+    #@schema/nullable
+    script: ""
+    #@schema/nullable
+    style: ""
+  #@schema/nullable
+  workshopInstructions:
+    #@schema/nullable
+    html: ""
+    #@schema/nullable
+    script: ""
+    #@schema/nullable
+    style: ""
+  #@schema/nullable
+  workshopStarted:
+    #@schema/nullable
+    html: ""
+  #@schema/nullable
+  workshopFinished:
+    #@schema/nullable
+    html: ""
+  #@schema/nullable
+  trainingPortal:
+    #@schema/nullable
+    html: ""
+    #@schema/nullable
+    script: ""
+    #@schema/nullable
+    style: ""
+  #@schema/nullable
+  defaultTheme: ""
+  #@schema/nullable
+  themeDataRefs:
+    - name: ""
+      namespace: ""
+  #@schema/nullable
+  frameAncestors:
+    - ""
+#@schema/nullable
+imagePuller:
+  #@schema/default ["base-environment"]
+  prePullImages:
+    - ""

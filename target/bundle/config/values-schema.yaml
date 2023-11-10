@@ -37,7 +37,7 @@ clusterInfrastructure:
   #@schema/nullable
   #@schema/type any=True
   aws:
-    aws_id: "123456789012"
+    awsId: "123456789012"
     region: "eu-west-1"
 clusterSecurity:
   #@schema/validation one_of=["pod-security-policies", "pod-security-standards", "security-context-constraints", "kyverno", "none"]

@@ -54,6 +54,13 @@ directories:
           url: https://github.com/failk8s-packages/certs-package
           ref: develop
         newRootPath: src/bundle/config
+  - path: config/_ytt_lib/educates
+    contents:
+      - path: "."
+        git:
+          url: https://github.com/vmware-tanzu-labs/educates-training-platform
+          ref: develop
+        newRootPath: carvel-packages/training-platform/bundle/config
 
   # - path: carvel-packages/training-platform/bundle/config/_ytt_lib/kyverno-restricted/_ytt_lib/upstream
   #   contents:
