@@ -4,6 +4,7 @@
 #@ load("@ytt:struct", "struct")
 #@ load("@ytt:overlay", "overlay")
 #@ load("@ytt:json", "json")
+#@ load("@ytt:yaml", "yaml")
 #@ load("defaults/aws.lib.yaml", "aws", "eks")
 #@ load("defaults/azure.lib.yaml", "azure", "aks")
 #@ load("defaults/gcp.lib.yaml", "gcp", "gke", "gke_autopilot")
@@ -34,7 +35,7 @@
 #@   end
 #@ end
 
-#@ valuesToApply = struct.encode(json.decode(json.encode(getSpecificValues())))
+#@ valuesToApply = struct.encode(yaml.decode(yaml.encode(getSpecificValues())))
 #@ if data.values.debug:
 --- #@ valuesToApply
 #@ else:

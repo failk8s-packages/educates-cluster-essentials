@@ -12,6 +12,11 @@ namespace: projectcontour
 #@schema/desc "Should the namespace be created"
 createNamespace: true
 
+#@schema/desc "Contour dpeloyment configuration"
+#@schema/nullable
+contour:
+  replicas: 2
+
 #@schema/desc "Envoy service configuration"
 service:
   #@schema/validation one_of=["ClusterIP", "LoadBalancer"]

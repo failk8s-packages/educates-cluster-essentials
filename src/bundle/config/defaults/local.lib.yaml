@@ -9,6 +9,8 @@ clusterPackages:
     enabled: true
     settings:
       infraProvider: kind
+      contour:
+        replicas: 1
       configFileContents:
         defaultHttpVersions:
           - "HTTP/1.1"

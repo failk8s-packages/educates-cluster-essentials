@@ -15,6 +15,12 @@ accesslog-format: envoy
 default-http-versions: #@ data.values.configFileContents.defaultHttpVersions
 #@ end
 
+#@ if/end hasattr(data.values, "contour") and data.values.contour != None:
+#@overlay/match by=overlay.subset({"kind":"Deployment", "metadata": {"name": "contour"}})
+---
+spec:
+  replicas: #@ data.values.contour.replicas
+
 #@overlay/match by=overlay.subset({"kind":"ConfigMap", "metadata": {"name": "contour"}})
 ---
 data:

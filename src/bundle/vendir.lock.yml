@@ -16,24 +16,24 @@ directories:
   path: config/_ytt_lib/kyverno/upstream
 - contents:
   - git:
-      commitTitle: Generating the package files
-      sha: b35780dd5667979dc6f8cd54eccf809689c6d741
+      commitTitle: Updated cert-manager to 1.13.2
+      sha: 73d773032a9fe7e7fa1da77b504098ff64e70a2f
       tags:
-      - 1.12.0-3-gb35780d
+      - 1.12.0-4-g73d7730
     path: .
   path: config/_ytt_lib/cert-manager
 - contents:
   - git:
-      commitTitle: Added overlay for kind
-      sha: 1d7a7c7d7f7c91462349723758f98983c9cb00cf
+      commitTitle: Added replicas to envoy and fix kind hostports
+      sha: b398b77a44b81508d52b2554666adb40a7870338
       tags:
-      - 1.25.0-4-g1d7a7c7
+      - 1.25.0-5-gb398b77
     path: .
   path: config/_ytt_lib/contour
 - contents:
   - git:
-      commitTitle: Fixes
-      sha: 7e03e948b61e455f2f6fa66a5f633aef5d4c84ca
+      commitTitle: Updated external-dns to 0.14.0
+      sha: 17e32e0d4ab9a5eaad46e01f9cec41f9577240e9
     path: .
   path: config/_ytt_lib/external-dns
 - contents:
