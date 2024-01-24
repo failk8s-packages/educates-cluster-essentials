@@ -1,0 +1,7 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:overlay", "overlay")
+
+#@overlay/match-child-defaults missing_ok=True
+clusterPackages:
+  cert-manager:
+    enabled: false

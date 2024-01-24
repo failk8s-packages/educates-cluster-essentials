@@ -30,7 +30,7 @@ function build {
 
     # Create imgpkgBundle
     echo "Updating package: $_name:$_version"
-    ytt --data-values-file $BASE_DIR/src/example-values/minikube.yaml -f $BASE_DIR/target/bundle | kbld -f - --imgpkg-lock-output $BASE_DIR/target/bundle/.imgpkg/images.yml
+    ytt --data-values-file $BASE_DIR/scenarios/test-kind-scenario-3.yaml -f $BASE_DIR/target/bundle/config/ytt | kbld -f - --imgpkg-lock-output $BASE_DIR/target/bundle/.imgpkg/images.yml
     imgpkg push --bundle $_registry/$_name-package:$_version --file $BASE_DIR/target/bundle
 
     # Create manifests

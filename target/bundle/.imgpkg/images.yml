@@ -2,6 +2,20 @@
 apiVersion: imgpkg.carvel.dev/v1alpha1
 images:
 - annotations:
+    kbld.carvel.dev/id: bitnami/kubectl:1.26.10
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.26.10
+          url: bitnami/kubectl:1.26.10
+  image: index.docker.io/bitnami/kubectl@sha256:499e0b6a12bb59ca0c189c694f7553ace2e19cc816f754b6c7ea0e15372070c7
+- annotations:
+    kbld.carvel.dev/id: bitnami/kubectl:1.26.4
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.26.4
+          url: bitnami/kubectl:1.26.4
+  image: index.docker.io/bitnami/kubectl@sha256:a0a972324d937b2c2f7207af29d1abd6ce3f7fd5ea73357036a67ab24f34cc92
+- annotations:
     kbld.carvel.dev/id: docker.io/envoyproxy/envoy:v1.28.0
     kbld.carvel.dev/origins: |
       - resolved:
@@ -9,26 +23,40 @@ images:
           url: docker.io/envoyproxy/envoy:v1.28.0
   image: index.docker.io/envoyproxy/envoy@sha256:9a52e754feb42fffd580f04a8e76ccac7cab0d2f1362ddd162136e13b155ed7f
 - annotations:
-    kbld.carvel.dev/id: ghcr.io/kyverno/cleanup-controller:v1.9.2
+    kbld.carvel.dev/id: ghcr.io/kyverno/background-controller:v1.11.3
     kbld.carvel.dev/origins: |
       - resolved:
-          tag: v1.9.2
-          url: ghcr.io/kyverno/cleanup-controller:v1.9.2
-  image: ghcr.io/kyverno/cleanup-controller@sha256:49efaea8d55dd625372e6e9995627a580a24f45dc0533ab6d26e39ec28940620
+          tag: v1.11.3
+          url: ghcr.io/kyverno/background-controller:v1.11.3
+  image: ghcr.io/kyverno/background-controller@sha256:063a20239d5484ffb7971e168fba35b52fb51c04efe1fd742ac96da23eb43624
 - annotations:
-    kbld.carvel.dev/id: ghcr.io/kyverno/kyverno:v1.9.2
+    kbld.carvel.dev/id: ghcr.io/kyverno/cleanup-controller:v1.11.3
     kbld.carvel.dev/origins: |
       - resolved:
-          tag: v1.9.2
-          url: ghcr.io/kyverno/kyverno:v1.9.2
-  image: ghcr.io/kyverno/kyverno@sha256:5959b32974479354dc2000f8413abb5315cb7aeb34f3038895d4f9a27a398368
+          tag: v1.11.3
+          url: ghcr.io/kyverno/cleanup-controller:v1.11.3
+  image: ghcr.io/kyverno/cleanup-controller@sha256:d080e1af60cbad8d74415ef189dc086dcc3fc8f7ce43c3c7f45881e142f95cbb
 - annotations:
-    kbld.carvel.dev/id: ghcr.io/kyverno/kyvernopre:v1.9.2
+    kbld.carvel.dev/id: ghcr.io/kyverno/kyverno:v1.11.3
     kbld.carvel.dev/origins: |
       - resolved:
-          tag: v1.9.2
-          url: ghcr.io/kyverno/kyvernopre:v1.9.2
-  image: ghcr.io/kyverno/kyvernopre@sha256:6d1a1c0891ff254950d5fef628ef05b97db11ba3b3acbf7f227f525c56af3481
+          tag: v1.11.3
+          url: ghcr.io/kyverno/kyverno:v1.11.3
+  image: ghcr.io/kyverno/kyverno@sha256:0172d358d910209e16a21445f5f3378f941809d27b0a8e0fa0c0163e8378e440
+- annotations:
+    kbld.carvel.dev/id: ghcr.io/kyverno/kyvernopre:v1.11.3
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: v1.11.3
+          url: ghcr.io/kyverno/kyvernopre:v1.11.3
+  image: ghcr.io/kyverno/kyvernopre@sha256:9e4674f29c6c4ea18ddee769add7ca22248927ae80f146845eb6315b6159c98c
+- annotations:
+    kbld.carvel.dev/id: ghcr.io/kyverno/reports-controller:v1.11.3
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: v1.11.3
+          url: ghcr.io/kyverno/reports-controller:v1.11.3
+  image: ghcr.io/kyverno/reports-controller@sha256:c4e5da7d0dca1033adc28555f4020e97a18f2ab79f113871d26275a25ffe04dd
 - annotations:
     kbld.carvel.dev/id: ghcr.io/projectcontour/contour:v1.27.0
     kbld.carvel.dev/origins: |
@@ -36,4 +64,39 @@ images:
           tag: v1.27.0
           url: ghcr.io/projectcontour/contour:v1.27.0
   image: ghcr.io/projectcontour/contour@sha256:6c81dfd591b3fea52df045fd0872a0b44a9397badfd5c732cdcb71a6780b328b
+- annotations:
+    kbld.carvel.dev/id: ghcr.io/vmware-tanzu-labs/educates-base-environment:latest
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: latest
+          url: ghcr.io/vmware-tanzu-labs/educates-base-environment:latest
+  image: ghcr.io/vmware-tanzu-labs/educates-base-environment@sha256:e34b1df1ecd9951057c890971092396f509ba99fde3b2bed9dc8d337e6b99a20
+- annotations:
+    kbld.carvel.dev/id: ghcr.io/vmware-tanzu-labs/educates-pause-container:latest
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: latest
+          url: ghcr.io/vmware-tanzu-labs/educates-pause-container:latest
+  image: ghcr.io/vmware-tanzu-labs/educates-pause-container@sha256:82b7a28bea1db69b2b52779a5429daa1f9580a2f4e3fdfff288a56d645c10ac3
+- annotations:
+    kbld.carvel.dev/id: ghcr.io/vmware-tanzu-labs/educates-secrets-manager:latest
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: latest
+          url: ghcr.io/vmware-tanzu-labs/educates-secrets-manager:latest
+  image: ghcr.io/vmware-tanzu-labs/educates-secrets-manager@sha256:aee31d60190e6d0b6cb237d766d4ff781c2cf044b17162a00f55fdb886ec0da5
+- annotations:
+    kbld.carvel.dev/id: ghcr.io/vmware-tanzu-labs/educates-session-manager:latest
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: latest
+          url: ghcr.io/vmware-tanzu-labs/educates-session-manager:latest
+  image: ghcr.io/vmware-tanzu-labs/educates-session-manager@sha256:2c3cc783f0c138161f0546ebbcd2015ebac05ae412bdc1fc350f6810927ffb90
+- annotations:
+    kbld.carvel.dev/id: ghcr.io/vmware-tanzu-labs/educates-training-portal:latest
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: latest
+          url: ghcr.io/vmware-tanzu-labs/educates-training-portal:latest
+  image: ghcr.io/vmware-tanzu-labs/educates-training-portal@sha256:6b13d5439fd7e260e8ea2825c7f843ab7b4dea15919a0c9b83d2c9419a19c368
 kind: ImagesLock

@@ -12,6 +12,16 @@ This package provides educates-cluster-essentials functionality using [educates-
 - certs
 - **TODO: registry**
 
+## Develop
+
+This is some information useful for developing this package:
+
+### How to test scenarios
+
+```
+./scenarios/test-scenarios.sh
+```
+
 ## Configuration
 
 The following configuration values can be set to customize the educates-cluster-essentials installation.
@@ -94,11 +104,21 @@ If there's an issue, you can verify the problem with:
 kubectl get packageinstall educates-cluster-essentials -n educates-cluster-essentials-package -o yaml
 ```
 
-## Develop checklist
+## Develop
+
+### Upgrade packages
+
+Edit [vendir.yml](./src/bundle/vendir.yml) file and update versions of components. The run:
+
+```
+vendir sync --chdir=src/bundle
+```
+
+### Develop checklist
 
 1. Update your [config.json](./config.json) with the package info
 2. Add [overlays](./src/bundle/config/overlays/) and [values](./src/bundle/config/values.yaml)
-3. Test your bundle: `ytt --data-values-file src/example-values/minikube.yaml  -f src/bundle/config` providing a sample values file from [example-values](./src/examples-values/)
+3. Test your bundle: `ytt --data-values-file scenarios/test-kind-scenario-3.yaml  -f src/bundle/config` providing a sample values file from [example-values](./src/examples-values/)
 4. Build your bundle `./hack/build.sh`
 5. Add it to the [failk8s-repo](https://github.com/failk8s-packages/failk8s-repo) and publish the new repo and test the package from there, or [test with local files](./target/test)
 
