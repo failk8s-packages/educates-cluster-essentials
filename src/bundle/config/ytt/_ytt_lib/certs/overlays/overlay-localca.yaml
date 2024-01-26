@@ -12,6 +12,7 @@ metadata:
   name: local-root-ca
   namespace: cert-manager
 data:
+  ca.crt: #@ base64.encode(data.values.local.rootCA.crt)
   tls.crt: #@ base64.encode(data.values.local.rootCA.crt)
   tls.key: #@ base64.encode(data.values.local.rootCA.key)
 

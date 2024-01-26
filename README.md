@@ -22,6 +22,41 @@ This is some information useful for developing this package:
 ./scenarios/test-scenarios.sh
 ```
 
+### How to test in real cluster
+
+#### On kind
+
+Create cluster:
+
+```
+kind create custer --config kind-templates/<KIND_TEMPLATE_FOR_SCENARIO>
+```
+
+Deploy scenario:
+
+```
+ytt --data-value-yaml debug=false --data-values-file <SCENARIO> -f src/bundle/config | kapp deploy -a educates -f - -c -y
+```
+
+Deploy a workshop and test:
+
+```
+educates deploy-workshop -f https://github.com/vmware-tanzu-labs/lab-k8s-fundamentals/releases/latest/download/workshop.yaml
+educates browse-workshops
+```
+
+Delete scenario:
+
+```
+kapp delete -a educates -c -y
+```
+
+Delete cluster:
+
+```
+kind delete cluster --name test-educates
+```
+
 ## Configuration
 
 The following configuration values can be set to customize the educates-cluster-essentials installation.

@@ -70,17 +70,17 @@ directories:
           ref: origin/release-1.11
         includePaths:
           - "best-practices/disallow-empty-ingress-host/disallow-empty-ingress-host.yaml"
-          - "best-practices/disallow_cri_sock_mount/disallow-cri-sock-mount.yaml"
+          - "best-practices/disallow-cri-sock-mount/disallow-cri-sock-mount.yaml"
           - "best-practices/restrict-service-external-ips/restrict-service-external-ips.yaml"
-          - "best-practices/restrict_node_port/restrict-node-port.yaml"
-          - "nginx-ingress/disallow-nginx-custom-snippets/disallow-ingress-nginx-custom-snippets.yaml"
+          - "best-practices/restrict-node-port/restrict-node-port.yaml"
+          - "nginx-ingress/disallow-ingress-nginx-custom-snippets/disallow-ingress-nginx-custom-snippets.yaml"
           - "nginx-ingress/restrict-annotations/restrict-annotations.yaml"
-          - "nginx-ingress/restrict-ingress-path/restrict-ingress-path.yaml"
+          - "nginx-ingress/restrict-ingress-paths/restrict-ingress-paths.yaml"
           - "other/b-d/disallow-localhost-services/disallow-localhost-services.yaml"
           - "other/m-q/prevent-cr8escape/prevent-cr8escape.yaml"
-          - "other/res/restrict-ingress-defaultbackend/restrict-ingress-defaultbackend.yaml"
+          #! - "other/res/restrict-ingress-defaultbackend/restrict-ingress-defaultbackend.yaml"
           - "other/res/restrict-loadbalancer/restrict-loadbalancer.yaml"
-          - "other/s-z/unique-ingress-host-and-path/unique-ingress-host-and-path.yaml"
+          #! - "other/s-z/unique-ingress-host-and-path/unique-ingress-host-and-path.yaml"
   - path: config/ytt/_ytt_lib/cert-manager/upstream
     contents:
       - path: .

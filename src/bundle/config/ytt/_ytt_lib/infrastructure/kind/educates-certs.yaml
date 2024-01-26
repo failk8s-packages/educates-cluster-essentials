@@ -11,7 +11,11 @@ clusterPackages:
         tlsCertificateRef:
           namespace: projectcontour
           name: wildcard
-        #@ if/end isWildcardCAEnabled():
+        #@ if isWildcardCAEnabled():
         caCertificateRef:
           namespace: cert-manager
           name: local-root-ca
+        #! NOTE: Nodes Operating System must be based of Debian in order to allow NodeInjector
+        caNodeInjector:
+          enabled: true
+        #@ end

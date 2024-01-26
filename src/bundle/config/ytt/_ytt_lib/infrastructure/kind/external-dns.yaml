@@ -3,5 +3,6 @@
 
 #@overlay/match-child-defaults missing_ok=True
 clusterPackages:
-  cert-manager:
+  external-dns:
     enabled: false
+    settings: {}
